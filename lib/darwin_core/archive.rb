@@ -24,19 +24,19 @@ module DarwinCore
       FileUtils.mkdir_p @work_path, :mode => 0755
 
       @place = Place.find_by_id(@opts[:place].to_i) || Place.find_by_name(@opts[:place])
-      logger.debug "Found place: #{@place}"
+      logger.debug "Place: #{@place}"
       @taxon = if @opts[:taxon].is_a?(::Taxon)
         @opts[:taxon]
       else
         ::Taxon.find_by_id(@opts[:taxon].to_i) || ::Taxon.find_by_name(@opts[:taxon])
       end
-      logger.debug "Found taxon: #{@taxon}"
+      logger.debug "Taxon: #{@taxon}"
       @project = if @opts[:project].is_a?(::Project)
         @opts[:project]
       else
         ::Project.find( @opts[:project] ) rescue nil
       end
-      logger.debug "Found project: #{@project}"
+      logger.debug "Project: #{@project}"
       logger.debug "Photo licenses: #{@opts[:photo_licenses].inspect}"
     end
 
@@ -139,22 +139,31 @@ module DarwinCore
       fake_view = FakeView.new
       
       preloads = [
-        :taxon, 
+        { taxon: :ancestor_taxa },
         { user: :stored_preferences }, 
         :quality_metrics, 
         :identifications,
         { observations_places: :place }
       ]
       
-      start = Time.now
+      field_times = DarwinCore::Occurrence::TERMS.map.inject({}) do |memo,obj|
+        memo[obj[3] || obj[0]] = []
+        memo
+      end
       CSV.open(tmp_path, 'w') do |csv|
         csv << headers
         observations_in_batches(observations_params, preloads, label: 'make_occurrence_data') do |o|
           o = DarwinCore::Occurrence.adapt(o, view: fake_view, private_coordinates: @opts[:private_coordinates])
           csv << DarwinCore::Occurrence::TERMS.map do |field, uri, default, method| 
+            start = Time.now
             o.send(method || field)
+            field_times[method || field] << (Time.now - start)
           end
         end
+      end
+      logger.debug "FINAL FIELD TIMES"
+      field_times.each do |field, times|
+        logger.debug "#{field.ljust(30)}#{avg(times)} (#{times.size})"
       end
       
       tmp_path
@@ -295,6 +304,14 @@ module DarwinCore
       tmp_path
     end
 
+    def avg(numbers)
+      avg_batch_time = if numbers.size > 0
+        (numbers.inject{|sum, num| sum + num}.to_f / numbers.size).round(3)
+      else
+        0
+      end
+    end
+
     def observations_in_batches(params, preloads, options = {}, &block)
       batch_times = []
       Observation.search_in_batches(params) do |batch|
@@ -304,7 +321,8 @@ module DarwinCore
         else
           0
         end
-        avg_observation_time = avg_batch_time / 500
+        avg_batch_time = avg(batch_times)
+        avg_observation_time = avg_batch_time / ObservationSearch::ES_BATCH_SIZE
         logger.debug "Observation batch #{batch_times.size} #{"for #{options[:label]} " if options[:label]}(avg batch: #{avg_batch_time}s, avg obs: #{avg_observation_time}s)"
         Observation.preload_associations(batch, preloads)
         batch.each do |observation|

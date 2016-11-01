@@ -1,6 +1,7 @@
 module ObservationSearch
 
   LIST_FILTER_SIZE_CAP = 5000
+  ES_BATCH_SIZE = 500
 
   def self.included(base)
     base.extend ClassMethods
@@ -35,7 +36,7 @@ module ObservationSearch
 
     def search_in_batches(raw_params, options={}, &block)
       search_params = Observation.get_search_params(raw_params, options)
-      search_params.merge!({ min_id: 1, per_page: 500, preload: [ ],
+      search_params.merge!({ min_id: 1, per_page: ES_BATCH_SIZE, preload: [ ],
         order_by: "id", order: "asc" })
       loop do
         batch = Observation.page_of_results(search_params)
@@ -584,7 +585,7 @@ module ObservationSearch
       scope
     end
 
-    def elastic_user_observation_counts(elastic_params, limit = 500)
+    def elastic_user_observation_counts(elastic_params, limit = ES_BATCH_SIZE)
       user_counts = Observation.elastic_search(elastic_params.merge(size: 0, aggregate: {
         distinct_users: { cardinality: { field: "user.id", precision_threshold: 10000 } },
         user_observations: { "user.id": limit }
@@ -595,7 +596,7 @@ module ObservationSearch
     end
 
     def elastic_user_taxon_counts(elastic_params, options = {})
-      options[:limit] ||= 500
+      options[:limit] ||= ES_BATCH_SIZE
       aggregation_user_limit = 10000
       elastic_params[:filters] ||= [ ]
       elastic_params[:filters] << { range: {
@@ -623,7 +624,7 @@ module ObservationSearch
     end
 
     def elastic_user_taxon_counts_batch(elastic_params, options = {})
-      options[:limit] ||= 500
+      options[:limit] ||= ES_BATCH_SIZE
       species_counts = Observation.elastic_search(elastic_params.merge(size: 0, aggregate: {
         user_taxa: {
           terms: {
@@ -635,7 +636,7 @@ module ObservationSearch
         map{ |b| { "user_id" => b["key"], "count_all" => b["distinct_taxa"]["value"] } }
     end
 
-    def elastic_user_identification_counts(elastic_params, limit = 500)
+    def elastic_user_identification_counts(elastic_params, limit = ES_BATCH_SIZE)
       id_result = Observation.elastic_search(elastic_params.merge(size: 0,
         aggregate: {
           identifier_count: {
