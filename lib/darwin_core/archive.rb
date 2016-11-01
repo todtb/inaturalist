@@ -146,24 +146,32 @@ module DarwinCore
         { observations_places: :place }
       ]
       
+      adaptation_times = []
       field_times = DarwinCore::Occurrence::TERMS.map.inject({}) do |memo,obj|
         memo[obj[3] || obj[0]] = []
         memo
       end
+      csv_write_times = []
       CSV.open(tmp_path, 'w') do |csv|
         csv << headers
         observations_in_batches(observations_params, preloads, label: 'make_occurrence_data') do |o|
+          adaptation_start = Time.now
           o = DarwinCore::Occurrence.adapt(o, view: fake_view, private_coordinates: @opts[:private_coordinates])
+          adaptation_times << (Time.now - adaptation_start)
+          csv_write_start = Time.now
           csv << DarwinCore::Occurrence::TERMS.map do |field, uri, default, method| 
             start = Time.now
             o.send(method || field)
             field_times[method || field] << (Time.now - start)
           end
+          csv_write_times << (Time.now - csv_write_start)
         end
       end
-      logger.debug "FINAL FIELD TIMES"
+      logger.debug "ADAPTATION AVG: #{avg(adaptation_times)}"
+      logger.debug "CSV WRITE AVG: #{avg(csv_write_times)}"
+      logger.debug "FIELD AVGS"
       field_times.each do |field, times|
-        logger.debug "#{field.ljust(30)}#{avg(times)} (#{times.size})"
+        logger.debug "#{field.ljust(30)}#{avg(times)}"
       end
       
       tmp_path
@@ -306,7 +314,7 @@ module DarwinCore
 
     def avg(numbers)
       avg_batch_time = if numbers.size > 0
-        (numbers.inject{|sum, num| sum + num}.to_f / numbers.size).round(3)
+        (numbers.inject{|sum, num| sum + num}.to_f / numbers.size).round(4)
       else
         0
       end
@@ -314,22 +322,21 @@ module DarwinCore
 
     def observations_in_batches(params, preloads, options = {}, &block)
       batch_times = []
+      preload_times = []
       Observation.search_in_batches(params) do |batch|
         start = Time.now
-        avg_batch_time = if batch_times.size > 0
-          (batch_times.inject{|sum, num| sum + num}.to_f / batch_times.size).round(3)
-        else
-          0
-        end
         avg_batch_time = avg(batch_times)
         avg_observation_time = avg_batch_time / ObservationSearch::ES_BATCH_SIZE
         logger.debug "Observation batch #{batch_times.size} #{"for #{options[:label]} " if options[:label]}(avg batch: #{avg_batch_time}s, avg obs: #{avg_observation_time}s)"
+        preload_start = Time.now
         Observation.preload_associations(batch, preloads)
+        preload_times << ( Time.now - preload_start )
         batch.each do |observation|
           yield observation
         end
         batch_times << (Time.now - start)
       end
+      logger.debug "PRELOAD AVG: #{avg(preload_times)}"
     end
 
     def make_archive(*args)
