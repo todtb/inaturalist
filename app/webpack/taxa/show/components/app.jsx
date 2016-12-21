@@ -69,10 +69,10 @@ const App = ( { taxon } ) => (
               establishmentMeans={taxon.establishment_means}
             />
             <Row>
-              <Col xs={6}>
+              <Col xs={12} md={6}>
                 <PhotoPreviewContainer />
               </Col>
-              <Col xs={6}>
+              <Col xs={12} md={6}>
                 <Leaders taxon={taxon} />
                 <Row>
                   <Col xs={12}>

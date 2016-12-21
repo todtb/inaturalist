@@ -53,3 +53,16 @@
 .media  {
   margin-bottom:15px
 }
+
+// responsive stuff
+@media (max-width: 767px) {
+  .jumbotron .or {
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+  }
+  .jumbotron nobr .btn {
+    display: block;
+    margin: 10px 0;
+  }
+}

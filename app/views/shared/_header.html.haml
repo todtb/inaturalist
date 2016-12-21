@@ -7,7 +7,7 @@
       - else
         %a.logolink.innertab{:href => "/", :title => "#{site.try(:name) || SITE_NAME}"}
           = image_tag @site && @site.logo? ? @site.logo.url : CONFIG.logo, :alt => SITE_NAME
-  %ul#mainnav.navtabs
+  %ul#mainnav.navtabs.hidden-xs
     - unless @minimal_header
       %li.navtab.observationstab.menutab
         .innertab

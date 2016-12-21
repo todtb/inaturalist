@@ -28,7 +28,7 @@
         %li{role: 'presentation', :class => params[:by] == "you" ? "inactive" : "active"}= link_to t(:by_everyone), url_for_params(:without => [:by, :page])
         %li{role: 'presentation', :class => params[:by] != "you" ? "inactive" : "active"}= link_to t(:by_you), url_for_params(:by => "you", :without => [:page])
   .row
-    .col-xs-3
+    .col-xs-3.hidden-xs
       %ul#places.nav.nav-stacked.nav-pills
         %li.nav-header
           - if @place
@@ -96,7 +96,7 @@
               = subnav_taxa
         - else
           = nav_taxa
-    .col-xs-9
+    .col-xs-12.col-md-9
       - for row in @guides.in_groups_of(2)
         .row.stacked
           - for guide in row.compact

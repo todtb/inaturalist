@@ -329,7 +329,24 @@ form .field .description { margin-bottom: 0.5em;}
 
 /* Site Header */
 
-#header { color: #999; position: relative; margin-bottom: 20px; min-width: 980px;}
+// responsive stuff
+@media (max-width: 767px) {
+  #header .hidden-xs {
+    display: none !important;
+  }
+  #header {
+    justify-content: space-between;
+  }
+}
+.container { width: auto !important; }
+// end responsive stuff
+
+#header {
+  color: #999;
+  position: relative;
+  margin-bottom: 20px;
+  // min-width: 980px;
+}
 #header, #header #usernav, #header #logonav { background-color: #eee; z-index: 11; }
 
 #header .innertab a, #header .count { color: #333; }
@@ -867,7 +884,7 @@ ul.leafylist li li:first-child {
   font-size: 100%;
   color: #999;
   width: 100%;
-  min-width: 980px;
+  // min-width: 980px;
 }
 #footer a { color: #333; }
 #footer a:hover { font-weight: 600; }

@@ -241,3 +241,12 @@ input[type="color"]:focus,
   flex: 2;
   min-width: 100px; // apparently required for IE
 }
+
+// experimental overrides for responsiveness
+@media screen and (max-width: 767px) {
+  .container .jumbotron,
+  .container-fluid .jumbotron {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+}

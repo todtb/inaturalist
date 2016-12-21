@@ -13,7 +13,7 @@
 
 #TaxonDetail .container-fluid,
 #TaxonDetail .container {
-  min-width: 980px;
+  // min-width: 980px;
 }
 
 #TaxonHeader .inner {
@@ -1022,3 +1022,9 @@ body > div > [role="dialog"] .PhotoChooserModal .modal-title {
   content: '';
 }
 .AkaNames .name { color: black; }
+
+@media (max-width: 767px) {
+  #main-tabs {
+    flex-flow: wrap;
+  }
+}

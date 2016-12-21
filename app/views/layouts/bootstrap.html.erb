@@ -5,7 +5,7 @@
   <head>
     <title><%= content_for(:title) ? "#{content_for(:title)} · " : "" %> <%= @site.try(:name) %> </title>
     <%= favicon_link_tag %>
-    <meta name="viewport" content="width=980">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=<%= @user_scalable.blank? ? '1' : @user_scalable %>" />
     <%= render :partial => 'shared/common_stylesheets'%>
     <!-- Bootstrap -->
     <%= stylesheet_link_tag 'bootstrap_bundle' %>
