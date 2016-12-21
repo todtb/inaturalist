@@ -2,7 +2,7 @@
 class TaxaController < ApplicationController
   caches_page :range, :if => Proc.new {|c| c.request.format == :geojson}
   caches_action :show, :expires_in => 1.day,
-    :cache_path => Proc.new{ |c| { locale: I18n.locale? } },
+    :cache_path => Proc.new{ |c| { locale: I18n.locale } },
     :if => Proc.new {|c|
       !request.format.json? && (c.session.blank? || c.session['warden.user.user.key'].blank?)
     }
