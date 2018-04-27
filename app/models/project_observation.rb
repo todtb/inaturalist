@@ -427,7 +427,7 @@ class ProjectObservation < ActiveRecord::Base
     project = options[:project] || project_observations.first.project
     columns = Observation::CSV_COLUMNS
     unless project.curated_by?(options[:user])
-      columns -= %w(private_latitude private_longitude private_positional_accuracy)
+      columns -= %w(private_latitude private_longitude)
     end
     headers = columns.map{|c| Observation.human_attribute_name(c)}
 

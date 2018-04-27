@@ -4758,6 +4758,11 @@ en:
         private_longitude: "Private longitude, set if observation private or obscured" 
         geoprivacy: "Whether or not the observer has chosen to obscure or hide the coordinates"
         coordinates_obscured: "Whether or not the coordinates have been obscured, either because of geoprivacy or because of a threatened taxon"
+        public_coordinate_uncertainty: |
+          The maximum coordinate uncertainty. If positional_accuracy is blank,
+          this is blank. If the coordinates are obscured, this is the length of
+          the diagonal of the obscuration cell. Otherwise it is the positional
+          accuracy.
         out_of_range: Whether or not this observation lies outside the taxon's known range
         user_id: Unique identifier for the observer
         user_login: Username of the observer

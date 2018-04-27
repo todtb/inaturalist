@@ -368,10 +368,10 @@ inatTaxonMap.addObservationsToMap = function( map, options, preserveViewport ) {
         radius: o.positional_accuracy
       })
     // Viewer cannot view private coordinates or they haven't been set, show the public positional accuracy
-    } else if (o.public_positional_accuracy) {
+    } else if (o.display_coordinate_uncertainty) {
       accuracyCircle = new google.maps.Circle({
         center: new google.maps.LatLng(o.latitude, o.longitude),
-        radius: o.public_positional_accuracy
+        radius: o.display_coordinate_uncertainty
       })
     }
 

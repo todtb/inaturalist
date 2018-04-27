@@ -32,7 +32,7 @@ class MapDetails extends React.Component {
     const { observation, observationPlaces } = this.props;
     if ( !observation ) { return ( <div /> ); }
     let accuracy = observation.private_geojson ?
-      observation.positional_accuracy : observation.public_positional_accuracy;
+      observation.positional_accuracy : observation.display_coordinate_uncertainty;
     let accuracyUnits = "m";
     if ( accuracy > 1000 ) {
       accuracy = _.round( accuracy / 1000, 2 );

@@ -145,10 +145,10 @@ class Observation < ActiveRecord::Base
     "latitude", 
     "longitude",
     "positional_accuracy",
+    "public_coordinate_uncertainty",
     "private_place_guess",
     "private_latitude",
     "private_longitude",
-    "private_positional_accuracy",
     "geoprivacy",
     "coordinates_obscured",
     "positioning_method",
@@ -198,9 +198,9 @@ class Observation < ActiveRecord::Base
     "private_place_guess",
     "private_latitude",
     "private_longitude",
-    "private_positional_accuracy",
     "geoprivacy",
     "coordinates_obscured",
+    "public_coordinate_uncertainty",
     "positioning_method",
     "positioning_device",
     "place_town_name",
@@ -367,7 +367,6 @@ class Observation < ActiveRecord::Base
              :update_all_licenses,
              :update_taxon_counter_caches,
              :update_quality_metrics,
-             :update_public_positional_accuracy,
              :update_mappable,
              :set_captive,
              :set_taxon_photo,
@@ -767,7 +766,7 @@ class Observation < ActiveRecord::Base
     options[:except] += [:user_agent]
     if viewer_id != user_id && !options[:force_coordinate_visibility]
       options[:except] += [:private_latitude, :private_longitude,
-        :private_positional_accuracy, :geom, :private_geom, :private_place_guess]
+        :geom, :private_geom, :private_place_guess]
       options[:methods] << :coordinates_obscured
     end
     options[:except] += [:cached_tag_list, :geom, :private_geom]
@@ -1409,7 +1408,7 @@ class Observation < ActiveRecord::Base
     public_place_guess = Observation.place_guess_from_latlon(
       private_latitude,
       private_longitude,
-      acc: calculate_public_positional_accuracy,
+      acc: display_coordinate_uncertainty,
       user: user
     )
     if coordinates_private?
@@ -1841,7 +1840,7 @@ class Observation < ActiveRecord::Base
   def set_place_guess_from_latlon
     return true unless place_guess.blank?
     return true if coordinates_private?
-    if guess = Observation.place_guess_from_latlon( latitude, longitude, { acc: calculate_public_positional_accuracy, user: user } )
+    if guess = Observation.place_guess_from_latlon( latitude, longitude, { acc: display_coordinate_uncertainty, user: user } )
       self.place_guess = guess
     end
     true
@@ -2567,18 +2566,23 @@ class Observation < ActiveRecord::Base
     "#{record.class.name.underscore}_#{record.id}"
   end
 
-  def public_positional_accuracy
-    if coordinates_obscured? && !read_attribute(:public_positional_accuracy)
-      update_public_positional_accuracy
-    end
-    read_attribute(:public_positional_accuracy)
+  def public_coordinate_uncertainty
+    return nil if positional_accuracy.blank?
+    display_coordinate_uncertainty
   end
 
-  def update_public_positional_accuracy
-    update_column(:public_positional_accuracy, calculate_public_positional_accuracy)
-  end
+  # def public_positional_accuracy
+  #   if coordinates_obscured? && !read_attribute(:public_positional_accuracy)
+  #     update_public_positional_accuracy
+  #   end
+  #   read_attribute(:public_positional_accuracy)
+  # end
 
-  def calculate_public_positional_accuracy
+  # def update_public_positional_accuracy
+  #   update_column(:public_positional_accuracy, calculate_public_positional_accuracy)
+  # end
+
+  def display_coordinate_uncertainty
     if coordinates_obscured?
       [ positional_accuracy.to_i, uncertainty_cell_diagonal_meters, 0 ].max
     elsif !positional_accuracy.blank?
@@ -2599,7 +2603,7 @@ class Observation < ActiveRecord::Base
 
   def calculate_mappable
     return false if latitude.blank? && longitude.blank?
-    return false if public_positional_accuracy && public_positional_accuracy > uncertainty_cell_diagonal_meters
+    return false if display_coordinate_uncertainty && display_coordinate_uncertainty > uncertainty_cell_diagonal_meters
     return false if inaccurate_location?
     return false unless passes_quality_metric?( QualityMetric::EVIDENCE )
     return false unless appropriate?

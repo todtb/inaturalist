@@ -35,7 +35,7 @@ class Map extends React.Component {
         "latitude",
         "longitude",
         "positional_accuracy",
-        "public_positional_accuracy",
+        "display_coordinate_uncertainty",
         "geoprivacy",
         "taxon",
         "user",

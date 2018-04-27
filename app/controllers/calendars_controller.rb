@@ -64,7 +64,7 @@ class CalendarsController < ApplicationController
           acc = o.positional_accuracy
         else
           next if o.latitude.blank?
-          acc = o.public_positional_accuracy || o.positional_accuracy
+          acc = o.display_coordinate_uncertainty || o.positional_accuracy
         end
         lat = o.private_latitude || o.latitude
         lon = o.private_longitude || o.longitude

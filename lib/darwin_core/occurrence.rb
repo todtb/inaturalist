@@ -174,7 +174,7 @@ module DarwinCore
       end
 
       def coordinateUncertaintyInMeters
-        public_positional_accuracy
+        public_coordinate_uncertainty
       end
 
       def countryCode

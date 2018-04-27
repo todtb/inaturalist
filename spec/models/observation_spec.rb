@@ -357,7 +357,7 @@ describe Observation do
         expect( o.place_guess ).not_to match /#{ user_place.name }/
       end
 
-      it "should only use places that contain the public_positional_accuracy" do
+      it "should only use places that contain the public_coordinate_uncertainty" do
         swlat, swlng, nelat, nelng = small_place.bounding_box
 
         place_left_side = lat_lon_distance_in_meters(swlat, swlng, nelat, swlng)
@@ -468,26 +468,26 @@ describe Observation do
       expect( o.observation_reviews.where( user_id: o.user_id ).count ).to eq 0
     end
 
-    it "should default accuracy of obscured observations to uncertainty_cell_diagonal_meters" do
+    it "should default display_coordinate_uncertainty of obscured observations to uncertainty_cell_diagonal_meters" do
       o = Observation.make!(geoprivacy: Observation::OBSCURED, latitude: 1.1, longitude: 2.2)
       expect(o.coordinates_obscured?).to be true
-      expect(o.calculate_public_positional_accuracy).to eq o.uncertainty_cell_diagonal_meters
+      expect(o.display_coordinate_uncertainty).to eq o.uncertainty_cell_diagonal_meters
     end
 
-    it "should set public accuracy to the greater of accuracy and M_TO_OBSCURE_THREATENED_TAXA" do
+    it "should set public coordinate uncertainty to the greater of accuracy and M_TO_OBSCURE_THREATENED_TAXA" do
       lat, lon = [ 1.1, 2.2 ]
       uncertainty_cell_diagonal_meters = Observation.uncertainty_cell_diagonal_meters( lat, lon )
       o = Observation.make!(geoprivacy: Observation::OBSCURED, latitude: lat, longitude: lon,
         positional_accuracy: uncertainty_cell_diagonal_meters + 1)
-      expect(o.calculate_public_positional_accuracy).to eq o.uncertainty_cell_diagonal_meters + 1
+      expect(o.public_coordinate_uncertainty).to eq o.uncertainty_cell_diagonal_meters + 1
     end
 
-    it "should set public accuracy to accuracy" do
-      expect(Observation.make!(positional_accuracy: 10).public_positional_accuracy).to eq 10
+    it "should set public coordinate uncertainty to accuracy" do
+      expect(Observation.make!(positional_accuracy: 10).public_coordinate_uncertainty).to eq 10
     end
 
-    it "should set public accuracy to nil if accuracy is nil" do
-      expect(Observation.make!(positional_accuracy: nil).public_positional_accuracy).to be_nil
+    it "should set public coordinate uncertainty to nil if accuracy is nil" do
+      expect(Observation.make!(positional_accuracy: nil).public_coordinate_uncertainty).to be_nil
     end
 
     it "should replace an inactive taxon with its active equivalent" do
@@ -1754,7 +1754,7 @@ describe Observation do
       expect( observation.private_longitude ).not_to be_blank
       expect( observation.private_longitude ).not_to eq observation.longitude
       expect( observation.place_guess ).to eq Observation.place_guess_from_latlon(
-        observation.latitude, observation.longitude, acc: observation.public_positional_accuracy )
+        observation.latitude, observation.longitude, acc: observation.public_coordinate_uncertainty )
       expect( observation.private_place_guess ).to eq original_place_guess
     end
   
@@ -1765,7 +1765,7 @@ describe Observation do
       expect( observation.private_longitude ).not_to be_blank
       expect( observation.private_longitude ).not_to eq observation.longitude
       expect( observation.place_guess ).to eq Observation.place_guess_from_latlon(
-        observation.latitude, observation.longitude, acc: observation.public_positional_accuracy )
+        observation.latitude, observation.longitude, acc: observation.public_coordinate_uncertainty )
       expect( observation.private_place_guess ).to eq original_place_guess
     end
   
@@ -2298,12 +2298,12 @@ describe Observation do
   end
 
   describe "public_places" do
-    it "should include system places that do contain the public_positional_accuracy circle" do
+    it "should include system places that do contain the public_coordinate_uncertainty circle" do
       p = make_place_with_geom( wkt: "MULTIPOLYGON(((0 0,0 1,1 1,1 0,0 0)))", admin_level: 1 )
       o = Observation.make!( latitude: p.latitude, longitude: p.longitude, taxon: make_threatened_taxon )
       expect( o.public_places ).to include p
     end
-    it "should include system places that don't contain public_positional_accuracy circle" do
+    it "should include system places that don't contain public_coordinate_uncertainty circle" do
       p = make_place_with_geom( wkt: "MULTIPOLYGON(((0 0,0 0.1,0.1 0.1,0.1 0,0 0)))", admin_level: 1 )
       o = Observation.make!( latitude: p.latitude, longitude: p.longitude, taxon: make_threatened_taxon )
       expect( o.public_places ).to include p
@@ -3513,17 +3513,16 @@ describe Observation do
     end
   end
 
-  describe "public_positional_accuracy" do
+  describe "public_coordinate_uncertainty" do
     it "should be set on read if nil" do
       t = make_threatened_taxon
       o = make_research_grade_observation( taxon: t )
       expect( o ).to be_coordinates_obscured
-      expect( o.public_positional_accuracy ).not_to be_blank
-      # o.update_attribute( :public_positional_accuracy, nil )
-      Observation.where( id: o.id ).update_all( public_positional_accuracy: nil )
+      expect( o.public_coordinate_uncertainty ).not_to be_blank
+      Observation.where( id: o.id ).update_all( public_coordinate_uncertainty: nil )
       o.reload
-      expect( o.read_attribute( :public_positional_accuracy ) ).to be_blank
-      expect( o.public_positional_accuracy ).not_to be_blank
+      expect( o.read_attribute( :public_coordinate_uncertainty ) ).to be_blank
+      expect( o.public_coordinate_uncertainty ).not_to be_blank
     end
   end
 end
