@@ -2648,17 +2648,6 @@ class Observation < ActiveRecord::Base
     display_coordinate_uncertainty
   end
 
-  # def public_positional_accuracy
-  #   if coordinates_obscured? && !read_attribute(:public_positional_accuracy)
-  #     update_public_positional_accuracy
-  #   end
-  #   read_attribute(:public_positional_accuracy)
-  # end
-
-  # def update_public_positional_accuracy
-  #   update_column(:public_positional_accuracy, calculate_public_positional_accuracy)
-  # end
-
   def display_coordinate_uncertainty
     if coordinates_obscured?
       [ positional_accuracy.to_i, uncertainty_cell_diagonal_meters, 0 ].max

@@ -3512,19 +3512,6 @@ describe Observation do
       expect( Observation.find_by_id(@dupe.id) ).not_to be_blank
     end
   end
-
-  describe "public_coordinate_uncertainty" do
-    it "should be set on read if nil" do
-      t = make_threatened_taxon
-      o = make_research_grade_observation( taxon: t )
-      expect( o ).to be_coordinates_obscured
-      expect( o.public_coordinate_uncertainty ).not_to be_blank
-      Observation.where( id: o.id ).update_all( public_coordinate_uncertainty: nil )
-      o.reload
-      expect( o.read_attribute( :public_coordinate_uncertainty ) ).to be_blank
-      expect( o.public_coordinate_uncertainty ).not_to be_blank
-    end
-  end
 end
 
 describe Observation, "probably_captive?" do

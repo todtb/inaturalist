@@ -238,7 +238,7 @@ describe CheckList, "refresh_with_observation" do
     ).to include( p.id )
     # place should not contain public accuracy circle
     expect(
-      p.bbox_contains_lat_lng_acc?( o.private_latitude, o.private_longitude, o.public_positional_accuracy )
+      p.bbox_contains_lat_lng_acc?( o.private_latitude, o.private_longitude, o.display_coordinate_uncertainty )
     ).to be false
     expect( l.taxon_ids ).not_to include( @taxon.id )
     CheckList.refresh_with_observation( o )
