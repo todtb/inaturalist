@@ -349,7 +349,7 @@ describe DarwinCore::Archive, "make_occurrence_data" do
   end
 
   it "should report coordinateUncertaintyInMeters as the longest diagonal across the uncertainty cell" do
-    o = make_research_grade_observation(geoprivacy: Observation::OBSCURED)
+    o = make_research_grade_observation( geoprivacy: Observation::OBSCURED, positional_accuracy: 10 )
     archive = DarwinCore::Archive.new(private_coordinates: true)
     obs = CSV.read(archive.make_occurrence_data, headers: true).first
     expect( obs['coordinateUncertaintyInMeters'] ).to eq o.uncertainty_cell_diagonal_meters.to_s
