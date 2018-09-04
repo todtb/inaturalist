@@ -209,6 +209,17 @@ describe TaxonSwap, "commit" do
       expect( child.parent ).to eq @output_taxon
       expect( descendant.ancestor_ids ).to include @output_taxon.id
     end
+    
+    it "should move children from the locked input to the output taxon" do
+      @input_taxon.update_attribute(:locked, true)
+      child = Taxon.make!( parent: @input_taxon, rank: Taxon::GENUS)
+      descendant = Taxon.make!( parent: child )
+      without_delay { @swap.commit }
+      child.reload
+      descendant.reload
+      expect( child.parent ).to eq @output_taxon
+      expect( descendant.ancestor_ids ).to include @output_taxon.id
+    end
 
     it "should not move inactive children from the input to the output taxon" do
       child = Taxon.make!( parent: @input_taxon, is_active: false )
@@ -618,6 +629,30 @@ describe "move_input_children_to_output" do
     output_subspecies = output_species.children.detect{|t| t.name == "Outputgenus foo foo" }
     expect( output_subspecies ).not_to be_blank
   end
+  
+  it "should work make swaps for subspecies when you swap a genus with a subgenus" do
+    input_genus = Taxon.make!( rank: Taxon::GENUS, name: "Inputgenus" )
+    input_subgenus = Taxon.make!( rank: Taxon::SUBGENUS, name: "Inputsubgenus", parent: input_genus )
+    input_species = Taxon.make!( rank: Taxon::SPECIES, name: "Inputgenus foo", parent: input_subgenus )
+    input_subspecies = Taxon.make!( rank: Taxon::SUBSPECIES, name: "Inputgenus foo foo", parent: input_species )
+    output_genus = Taxon.make!( rank: Taxon::GENUS, name: "Outputgenus", is_active: false )
+    # puts Taxon.where( "name like 'Inputgenus%'" ).all
+    swap = TaxonSwap.make
+    swap.committer = swap.user
+    swap.add_input_taxon( input_genus )
+    swap.add_output_taxon( output_genus )
+    swap.save!
+    swap.commit
+    Delayed::Worker.new.work_off
+    Delayed::Worker.new.work_off
+    Delayed::Worker.new.work_off
+    output_genus.reload
+    output_species = output_genus.children.detect{|t| t.name == "Outputgenus foo" }
+    expect( output_species ).not_to be_blank
+    output_subspecies = output_species.children.detect{|t| t.name == "Outputgenus foo foo" }
+    expect( output_subspecies ).not_to be_blank
+  end
+  
 end
 
 def prepare_swap
