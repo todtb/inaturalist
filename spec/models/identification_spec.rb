@@ -1104,6 +1104,8 @@ describe Identification, "set_previous_observation_taxon" do
 end
 
 describe Identification, "update_disagreement_identifications_for_taxon" do
+  before(:each) { enable_elastic_indexing( Observation, Identification ) }
+  after(:each) { disable_elastic_indexing( Observation, Identification ) }
   let(:f) { Taxon.make!( rank: Taxon::FAMILY ) }
   let(:g1) { Taxon.make!( rank: Taxon::GENUS, parent: f ) }
   let(:g2) { Taxon.make!( rank: Taxon::GENUS, parent: f ) }

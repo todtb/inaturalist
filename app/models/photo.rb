@@ -13,7 +13,8 @@ class Photo < ActiveRecord::Base
 
   include Shared::LicenseModule
   
-  before_save :set_license, :trim_fields
+  before_create :set_license
+  before_save :trim_fields
   after_save :update_default_license,
              :update_all_licenses,
              :index_observations

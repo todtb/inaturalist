@@ -256,6 +256,22 @@ describe TaxaController do
       expect( assigns(:photos) ).to include p
       expect( assigns(:photos) ).to include o2.photos.first
     end
+    it "should include unlicensed photos by default" do
+      p.update_attributes( license: Photo::COPYRIGHT )
+      expect( p ).not_to be_open_licensed
+      get :observation_photos, id: o.taxon.id
+      expect( assigns(:photos) ).to include p
+    end
+    it "should allow show only licensed photos on request" do
+      o2 = make_research_grade_observation( taxon: o.taxon )
+      p2 = o2.photos.first
+      p2.update_attributes( license: Photo::COPYRIGHT )
+      expect( p ).to be_open_licensed
+      expect( p2 ).not_to be_open_licensed
+      get :observation_photos, id: o.taxon.id, licensed: true
+      expect( assigns(:photos) ).to include p
+      expect( assigns(:photos) ).not_to include p2
+    end
   end
 
   describe "graft" do

@@ -2247,7 +2247,7 @@ describe Observation do
 
     it "should update default license when requested" do
       u = User.make!
-      expect(u.preferred_observation_license).to be_blank
+      expect( u.preferred_observation_license ).to eq Observation::CC_BY
       o = Observation.make!(:user => u, :make_license_default => true, :license => Observation::CC_BY_NC)
       expect( o.license ).to eq Observation::CC_BY_NC
       u.reload
@@ -2258,7 +2258,7 @@ describe Observation do
       u = User.make!
       o1 = Observation.make!(:user => u, :license => nil)
       o2 = Observation.make!(:user => u, :license => nil)
-      expect(o1.license).to be_blank
+      expect( o1.license ).to eq Observation::CC_BY
       o2.make_licenses_same = true
       o2.license = Observation::CC_BY_NC
       o2.save

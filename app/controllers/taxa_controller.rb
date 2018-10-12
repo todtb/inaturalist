@@ -700,17 +700,27 @@ class TaxaController < ApplicationController
       per_page = per_page.to_i > 50 ? 50 : per_page.to_i
     end
     observations = if @taxon
-      obs = Observation.of(@taxon).
-        joins(:photos).
-        where("photos.id IS NOT NULL AND photos.user_id IS NOT NULL AND photos.license IS NOT NULL").
-        paginate_with_count_over(:page => params[:page], :per_page => per_page)
+      filters = [
+        { exists: { field: "photos" } },
+        { term: { "taxon.ancestor_ids": @taxon.id } }
+      ]
       if licensed
-        obs = obs.where("photos.license IS NOT NULL AND photos.license > ? OR photos.user_id = ?", Photo::COPYRIGHT, current_user)
+        filters << {
+          exists: { field: "photos.license_code" }
+        }
       end
       unless quality_grades.blank?
-        obs = obs.where( "quality_grade IN (?)", quality_grades )
+        filters << {
+          terms: {
+            quality_grade: quality_grades
+          }
+        }
       end
-      obs.to_a
+      Observation.elastic_paginate(
+        filters: filters,
+        per_page: per_page,
+        page: params[:page]
+      )
     elsif params[:q].to_i > 0
       # Look up photos associated with a specific observation
       obs = Observation.where( id: params[:q] )

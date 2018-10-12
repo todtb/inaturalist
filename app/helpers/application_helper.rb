@@ -873,7 +873,7 @@ module ApplicationHelper
     else
       "&copy; #{user_name}"
     end
-    if record.license.blank?
+    if record.license.to_i == 0
       s += "#{options[:separator]}#{I18n.t(:all_rights_reserved)}"
     else
       s += options[:separator]

@@ -1385,9 +1385,9 @@ shared_examples_for "an ObservationsController" do
 
     describe "filtration by license" do
       before do
-        @all_rights = Observation.make!(license: nil)
+        @all_rights = Observation.make!( license: Shared::LicenseModule::COPYRIGHT )
         expect( @all_rights.license ).to be_nil
-        @cc_by = Observation.make!(license: Observation::CC_BY)
+        @cc_by = Observation.make!( license: Observation::CC_BY )
       end
       it "should work for any" do
         get :index, format: :json, license: 'any'
@@ -1411,8 +1411,8 @@ shared_examples_for "an ObservationsController" do
 
     describe "filtration by photo_license" do
       before do
-        @all_rights = Observation.make!
-        photo = LocalPhoto.make!
+        @all_rights = Observation.make!( license: Shared::LicenseModule::COPYRIGHT )
+        photo = LocalPhoto.make!( license: Shared::LicenseModule::COPYRIGHT )
         make_observation_photo(photo: photo, observation: @all_rights)
         @cc_by = Observation.make!(license: Observation::CC_BY)
         photo = LocalPhoto.make!(license: Photo::CC_BY)

@@ -201,7 +201,6 @@ end
 
 Observation.blueprint do
   user { User.make! }
-  license { Observation::CC_BY }
   description { Faker::Lorem.sentence }
 end
 
@@ -493,6 +492,9 @@ User.blueprint do
   created_at { 5.days.ago.to_s(:db) }
   state { "active" }
   time_zone { "Pacific Time (US & Canada)" }
+  preferred_observation_license { Observation::CC_BY }
+  preferred_photo_license { Observation::CC_BY_NC }
+  preferred_sound_license { Observation::CC_BY_NC }
 end
 
 UserBlock.blueprint do

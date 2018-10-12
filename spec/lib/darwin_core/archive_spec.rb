@@ -118,7 +118,7 @@ describe DarwinCore::Archive, "make_simple_multimedia_data" do
       expect( CSV.read(archive.make_simple_multimedia_data).size ).to eq 2
     end
     it "should include unlicensed images" do
-      without_delay { p.update_attributes( license: nil ) }
+      without_delay { p.update_attributes( license: Photo::COPYRIGHT ) }
       expect( p.license ).to eq Photo::COPYRIGHT
       p.observations.each(&:elastic_index!)
       archive = DarwinCore::Archive.new( extensions: %w(SimpleMultimedia), photo_licenses: ["ignore"])
@@ -314,7 +314,9 @@ describe DarwinCore::Archive, "make_occurrence_data" do
 
   it "should only include licensed observations by default" do
     with_license = make_research_grade_observation(license: Observation::CC_BY)
-    without_license = make_research_grade_observation(license: nil)
+    without_license = make_research_grade_observation( license: Shared::LicenseModule::COPYRIGHT )
+    expect( with_license.license ).to eq Observation::CC_BY
+    expect( without_license.license ).to be_blank
     archive = DarwinCore::Archive.new
     ids = CSV.read(archive.make_occurrence_data, headers: true).map{|r| r[0].to_i}
     expect( ids ).to include with_license.id

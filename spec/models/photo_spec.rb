@@ -32,27 +32,27 @@ describe Photo do
 
     it "should update default license when requested" do
       u = User.make!
-      expect(u.preferred_photo_license).to be_blank
+      expect( u.preferred_photo_license ).to eq Observation::CC_BY_NC
       p = Photo.make!(:user => u, :make_license_default => true,
-        :license => Photo.license_number_for_code(Observation::CC_BY_NC))
+        :license => Photo.license_number_for_code(Observation::CC0))
       u.reload
-      expect(u.preferred_photo_license).to eq Observation::CC_BY_NC
+      expect(u.preferred_photo_license).to eq Observation::CC0
     end
 
     it "should update all other photos when requested" do
       u = User.make!
       p1 = Photo.make!(:user => u)
       p2 = Photo.make!(:user => u)
-      expect(p1.license).to eq Photo::COPYRIGHT
+      expect( p1.license ).to eq Photo.license_number_for_code( Observation::CC_BY_NC )
       p2.make_licenses_same = true
-      p2.license = Photo.license_number_for_code(Observation::CC_BY_NC)
+      p2.license = Photo.license_number_for_code(Observation::CC0)
       p2.save
       p1.reload
-      expect(p1.license).to eq Photo.license_number_for_code(Observation::CC_BY_NC)
+      expect(p1.license).to eq Photo.license_number_for_code(Observation::CC0)
     end
 
     it "should nilify if not a license" do
-      p = Photo.make!(:license => Photo.license_number_for_code(Observation::CC_BY))
+      p = Photo.make!( license: Photo.license_number_for_code( Observation::CC_BY ) )
       p.update_attributes(:license => "on")
       p.reload
       expect(p.license).to eq Photo::COPYRIGHT

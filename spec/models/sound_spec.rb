@@ -11,23 +11,23 @@ describe Sound, "license" do
   
   it "should update default license when requested" do
     u = User.make!
-    expect(u.preferred_sound_license).to be_blank
+    expect( u.preferred_sound_license ).to eq Observation::CC_BY_NC
     Sound.make!(:user => u, :make_license_default => true, 
-      :license => Sound.license_number_for_code(Observation::CC_BY_NC))
+      :license => Sound.license_number_for_code(Observation::CC_BY))
     u.reload
-    expect(u.preferred_sound_license).to eq Observation::CC_BY_NC
+    expect(u.preferred_sound_license).to eq Observation::CC_BY
   end
   
   it "should update all other sounds when requested" do
     u = User.make!
     s1 = Sound.make!(:user => u)
     s2 = Sound.make!(:user => u)
-    expect(s1.license).to eq Sound::COPYRIGHT
+    expect(s1.license).to eq Sound::CC_BY_NC
     s2.make_licenses_same = true
-    s2.license = Sound.license_number_for_code(Observation::CC_BY_NC)
+    s2.license = Sound.license_number_for_code(Observation::CC_BY)
     s2.save
     s1.reload
-    expect(s1.license).to eq Sound.license_number_for_code(Observation::CC_BY_NC)
+    expect(s1.license).to eq Sound.license_number_for_code(Observation::CC_BY)
   end
   
   it "should nilify if not a license" do

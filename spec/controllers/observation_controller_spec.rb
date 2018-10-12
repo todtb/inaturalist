@@ -130,34 +130,34 @@ describe ObservationsController do
 
     describe "license changes" do
       let(:u) { User.make! }
-      let(:past_o) { Observation.make!(user: u, license: nil) }
-      let(:o) { Observation.make!(user: u, license: nil) }
+      let(:past_o) { Observation.make!( user: u ) }
+      let(:o) { Observation.make!( user: u ) }
       before do
-        expect( u.preferred_observation_license ).to be_nil
-        expect( past_o.license ).to be_nil
-        expect( o.license ).to be_nil
+        expect( u.preferred_observation_license ).to eq Observation::CC_BY
+        expect( past_o.license ).to eq Observation::CC_BY
+        expect( o.license ).to eq Observation::CC_BY
         sign_in u
       end
       it "should update the license of the observation" do
         without_delay do
-          put :update, id: o.id, observation: {license: Observation::CC_BY}
+          put :update, id: o.id, observation: { license: Observation::CC_BY_NC }
         end
         o.reload
-        expect( o.license ).to eq Observation::CC_BY
+        expect( o.license ).to eq Observation::CC_BY_NC
       end
       it "should update user default" do
         without_delay do
-          put :update, id: o.id, observation: {license: Observation::CC_BY, make_license_default: true}
+          put :update, id: o.id, observation: {license: Observation::CC_BY_NC, make_license_default: true}
         end
         u.reload
-        expect( u.preferred_observation_license ).to eq Observation::CC_BY
+        expect( u.preferred_observation_license ).to eq Observation::CC_BY_NC
       end
       it "should update past licenses" do
         without_delay do
-          put :update, id: o.id, observation: {license: Observation::CC_BY, make_licenses_same: true}
+          put :update, id: o.id, observation: {license: Observation::CC_BY_NC, make_licenses_same: true}
         end
         past_o.reload
-        expect( past_o.license ).to eq Observation::CC_BY
+        expect( past_o.license ).to eq Observation::CC_BY_NC
       end
     end
   end

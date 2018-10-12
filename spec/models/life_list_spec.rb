@@ -23,7 +23,7 @@ describe LifeList do
       @list.reload
       expect(@list.taxon_ids).to include(@child.id)
   
-      new_child = Taxon.make!(:parent => @taxon)
+      new_child = Taxon.make!( parent: @taxon, rank: Taxon::SUBSPECIES )
       obs.update_attributes(:taxon => new_child)
       @list.reload
       expect(@list.taxon_ids).not_to include(new_child.id)
