@@ -99,7 +99,6 @@ qqq:
   accept_community_identifications: An option (checkbox) in the account settings page
   accuracy: '{{Identical|Accuracy}}'
   accuracy_meters: '{{Identical|Accuracy}}'
-  acquaintances: '{{Identical|Acquaintance}}'
   action: '{{Identical|Action}}'
   actions: '{{Identical|Action}}'
   active: '{{Identical|Active}}'
@@ -107,7 +106,6 @@ qqq:
   adapted_by_name_from_a_work_by_original: where name is the adaptor's name and original
     is the original author's name
   add: '{{Identical|Add}}'
-  add_a_place_raquo: 不定冠詞 a 於中文裡省略不譯符合語言習慣。e.g. 一起吃個飯、然後看場電影。唱首歌、喝杯茶、...etc.
   add_a_single_observation: 單一項=一項，「單一項」感覺有些累贅
   add_a_taxon: 不定冠詞 a 於中文裡省略不譯符合語言習慣。e.g. 一起吃個飯、然後看場電影。唱首歌、喝杯茶、...etc.
   add_an_observation_of: where taxon is the name of a taxon such as Animalia
@@ -154,7 +152,6 @@ qqq:
     language'
   and: '{{Identical|And}}'
   and_help_the_inaturalist_community_grow: where site_name is the name of the site
-  and_you_havent_linked: where site_name is the name of the site
   android: |-
     It's assumed that this indicates the wellknown OS name (and brand) for mobile computing devices and home appliances, with a capital (left untranslated in most markets).
     And not a generic translatable term for an humanoid-shaped robot.
@@ -165,12 +162,8 @@ qqq:
   appropriate?: '{{Identical|Appropriate}}'
   archives: '{{Identical|Archive}}'
   are_you_sure?: '{{Identical|Are you sure?}}'
-  are_you_sure_delete_observation_from_project: where project is the name of a project
   are_you_sure_delete_taxon_move_associates: where taxonname is the name of a taxon
     and taxonid is its identifier
-  are_you_sure_remove_curator: where user is the name of a user
-  are_you_sure_remove_from_project: where user is the name of a user
-  are_you_sure_remove_taxon_from_place: where place is the name of a place
   are_you_sure_want_delete_taxon: where msg is the name of the taxon
   are_you_sure_you_want_to_remove_curator: where user is the name of a user
   are_you_sure_you_want_to_remove_from_project: where user is the name of a user
@@ -178,7 +171,6 @@ qqq:
   are_you_sure_you_want_to_remove_these_x_taxa?: where x is a number
   are_you_sure_you_want_to_remove_this_taxon_from_checklist: where place is the name
     of a place
-  articles: '{{Identical|Article}}'
   attention: '{{Identical|Attention}}'
   you_sure_delete_taxon_from_list?: where taxon is the name of a taxon
   asc: Abbreviation of "Ascending".

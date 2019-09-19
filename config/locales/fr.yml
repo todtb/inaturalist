@@ -161,14 +161,10 @@ fr:
     créé automatiquement à partir de l’attribut du nom scientifique de ce taxon. \nQuand
     vous aurez enregistré ce nouveau taxon, vous pourrez ajouter d’autres noms ici
     (noms communs, noms scientifiques obsolètes, etc.)."
-  a_few_points_to_make_things_clear: 'Quelques précisions pour rendre les choses plus
-    claires :'
   a_flag_for_x: un repère pour %{x}
   a_member_of: Un membre de
   a_member_of_taxon_html: un membre de %{taxon}
-  able_to_connect_flickr: Super ! Nous avons pu nous connecter à votre compte Flickr.
   about: À propos
-  about_bioblitz_results: À propos des résultats de bioblitz
   about_blocking: À propos du blocage
   about_charts: À propos des graphiques
   about_community_taxa: À propos des taxons de la communauté
@@ -176,16 +172,12 @@ fr:
   about_conservation_status: À propos de l’état de conservation
   about_editing_observation_fields: À propos de la modification des champs d’observation
   about_establishment_means: À propos des moyens d’implantation
-  about_external_links: À propos des liens externes
   about_licenses: À propos des licences
   about_licensing: À propos de l’octroi de licences
-  about_life!: À propos des êtres vivants !
   about_muting: À propos de réduire au silence
   about_names: À propos des noms
   about_places: À propos des lieux
-  about_taxon_changes: À propos des changements de taxon
   about_the_cc_licenses: À propos des licences Creative Commons
-  about_the_taxobox_raquo: À propos de taxobox &raquo;
   about_these_licenses: À propos de ces licences
   about_this_bioblitz: À propos de ce bioblitz
   about_this_map: À propos de cette carte
@@ -213,7 +205,6 @@ fr:
   accept: accepter
   accept_community_identifications: Accepter les identifications de la communauté
   accuracy: Précision
-  accuracy_m: Précision (m)
   accuracy_meters: Précision (mètres)
   accuracy_of_the_coordinates: |-
     Précision des coordonnées en mètres. Vous pouvez modifier les coordonnées
@@ -221,10 +212,8 @@ fr:
     marqueur de la carte et en le déplacant au bon endroit. Assurez-vous que le
     cercle soit assez grand pour être certain que vous vous trouviez
     à l’intérieur.
-  acquaintances: connaissances
   action: Action
   actions: Actions
-  activate_user: Activer l'utilisateur
   active: Actif
   active_users: Utilisateurs actifs
   activity: Activité
@@ -233,25 +222,16 @@ fr:
     par %{name}
   add: Ajouter
   add_a_batch_of_observations: Ajouter un lot d’observations
-  add_a_batch_of_observations_by_csv: Ajouter un lot d’observations au format CSV
   add_a_batch_of_taxa: Ajouter un lot de taxons
   add_a_comment: Ajouter un commentaire
   add_a_field: Ajouter un champ
   add_a_flag: Ajouter un repère
-  add_a_link_raquo: Ajouter un Lien &raquo;
   add_a_name: Ajoutez un nom
   add_a_new_change_group: Ajouter un nouveau groupe de modifications
-  add_a_new_observation_to_id_please!: Veuillez ajouter une nouvelle observation à
-    l'ID !
-  add_a_place_raquo: Ajouter un lieu &raquo;
   add_a_single_observation: Ajouter une observation unique.
   add_a_taxon: Ajouter un taxon
   add_a_taxon_swap_if_you_want_to_change_the_name_html: Ajouter une <a target="_blank"
     href="%{url}">permutation de taxon</a> si vous voulez changer le nom
-  add_all_your_matching_obs_of_this_taxon: Ajouter à ce projet toutes vos observations
-    correspondant à ce taxon
-  add_all_your_matching_obs_to_this_project: Ajouter à ce projet toutes vos observations
-    correspondantes
   add_an_assessment: Ajouter une évaluation
   add_an_identification: Ajouter une identification
   add_an_observation: Ajouter une observation
@@ -262,34 +242,25 @@ fr:
     sex: Ajouter des annotations pour « Sexe »
     plant_phenology: Ajouter des annotations pour « Phénologie de plante »
     life_stage: Ajouter des annotations pour « Étape de la vie »
-  add_another: En ajouter une autre
   add_another_flag: Ajouter un autre drapeau
   add_another_photo: Ajouter une autre photo
   add_another_section: Ajouter une autre section
   add_another_subscription: Ajouter un autre abonnement
   add_asset: Ajouter un actif
   add_batch: Ajouter un lot
-  add_colors: Ajouter des couleurs
   add_comma_separated_tags: Ajouter des balises séparées par des virgules
   add_comment: Ajouter un commentaire
-  add_common_names_for: Ajouter des noms communs à des taxons existants
   add_conservation_status: Ajouter la situation quant à la conservation
   add_countries: Ajouter des pays
   add_custom_project_fields: Ajouter des champs de projet personnalisés
   add_edit_flags: Ajouter / éditer les marquages
-  add_edit_more_fields: Ajouter/modifier plus de champs
   add_editor: Ajouter un éditeur
   add_description: Ajouter %{description_name}
-  add_field: Ajouter un champ
   add_from_your_observations: Ajouter à partir de vos observations
   add_link: Ajouter un lien
-  add_listed_taxa_from_observations: Ajouter les taxons répertoriés à partir des observations
   add_higher_level_taxon: Ajouter un taxon de plus haut rang (par ex. « oiseaux »)
   add_id: Ajouter une identification
-  add_it_to_place_raquo: Ajouter à un lieu &raquo;
-  add_more_photos: Ajouter plus de photos
   add_new_lexicon: Ajouter un nouveau lexique
-  add_new_observations: Ajouter de nouvelles observations
   add_new_photos_by_their_ids: Ajouter de nouvelles photos selon leur identifiant
     Flickr (doivent avoir une licence Creative Commons !)
   add_new_place: Ajouter un nouveau lieu
@@ -300,14 +271,9 @@ fr:
     par ex. où et quand cela se produit.
   add_obs_from_a_link: 'Ajouter des observations à partir du lien : %{link}'
   add_obs_from_a_list: Ajouter des observations à partir d’une liste
-  add_observation: Ajouter une observation
-  add_observations!: ajoutez des observations !
   add_observations: Ajouter des observations
   add_observations_by_checking_off: Ajouter des observations en cochant les espèces
     dans une liste.
-  add_observations_from_list: Ajouter des observations à partir d’une liste
-  add_observations_of_taxa_youve_added: Ajouter des observations sur les taxons que
-    vous avez ajoutés à une liste. Correction des bogues en cours…
   add_observations_project: Ajouter des observations à ce projet
   add_one: Ajoutez-en une!
   add_one_now: En ajouter un maintenant
@@ -333,25 +299,20 @@ fr:
   add_several_observations_at_once: Ajouter plusieurs observations à la fois
   add_sex_female_annotation: 'Ajouter l''annotation "Sex: Female"'
   add_sex_male_annotation: 'Ajouter l''annotation "Sex: Male"'
-  add_shape: Ajouter une forme
   add_some_now: En ajouter maintenant
   add_tag: Ajouter une balise
   add_tags: Ajouter des balises
   add_tags_to_selected_taxa: Ajouter des balises aux taxons sélectionnés
   add_taxa: Ajouter des taxons
-  add_taxa_to_places: Ajouter des taxons aux lieux
   add_taxon_batch_to: Ajouter un lot de taxons à %{list}
   add_taxon_range: Ajouter un périmètre de taxon
-  add_taxonomic_tags_to: Ajouter des étiquettes taxinomiques aux photos ''Flickr''
-    sélectionnées &raquo;
-  add_taxonomic_tags_to_the_flickr_photos: Ajouter les balises taxonomiques aux photos
-    Flickr associées avec les observations sélectionnées.
+  add_taxonomic_tags_to: Ajouter des étiquettes taxinomiques aux photos Flickr sélectionnées
+    &raquo;
   add_to_a_scheme: Ajouter à un programme
   add_to_a_project: Ajouter à un projet
   add_to_calendar: Ajouter au calendrier
   add_to_checklist: Ajouter à la liste de contrôle
   add_to_favorites: Ajouter aux favoris
-  add_to_id_please: Ajouter à Identification, SVP
   add_to_list: Ajouter à la liste
   add_to_project: Ajouter au projet
   add_to_your_life_list: Ajouter à votre liste des êtres vivants !
@@ -364,39 +325,29 @@ fr:
   add_your_photo_to: Ajouter votre photo à %{project}
   added: Ajouté
   added!: Ajouté !
-  added_an: a ajouté un
   added_as_a_part_of: Ajouté comme partie d’un
   added_by: Ajouté par
   added_by_user_on_date_html: Ajouté par %{user} le %{date}
-  added_identifications_to: identifications ajoutées aux observations de n’importe
-    quelle personne.
   added_on: Ajouté le
-  added_to: Ajouté à
-  added_to_favorites: Ajouté aux favoris
   added_to_favorites_html: Ajouté aux <a href="%{url}">favoris</a>
   adding: Ajout en cours…
-  adding_observations: Ajout d’observations en cours…
-  adding_to_your_life_list: Ajout à votre liste des êtres vivants…
   additional_range: Aire de répartition supplémentaire
   additional_range_data_from_an_unknown_source: Données supplémentaires sur l’aire
     de répartition d’une source inconnue
   adjust_brightness: Ajuster la luminosité
   admin: Admin
   admin_s: Administrateur(s)
-  admin_any_projects: Administrer n’importe quels projets
   admin_only: Administrateur uniquement
   admin_tools: Outils d’administration
   agree: accepter
   agree_: Accepter
   agree?: Accepter?
-  agree_to_the_project_terms: Accepter les modalités du projet
   agree_with_current_taxon: Accord avec le taxon actuel
   agreeing: Consentement en cours…
   aka: alias
   all: Tous
   all_colors: '&laquo; Toutes les couleurs'
   all_comments: Tous les commentaires
-  all_csv: Tous les formats CSV
   all_flags_must_be_resolved: Toutes les signalements doivent être résolus
   all_life: Tous les êtres vivants
   all_names: Tous les noms
@@ -404,8 +355,6 @@ fr:
   all_photos: Toutes les photos
   all_places: Tous les lieux
   all_projects: Tous les projets
-  all_children_added_to_the_database: Tous les enfants ont été ajoutés dans la base
-    de données
   all_rank_added_to_the_database:
     phylum: Tous les embranchements ajoutés à la base de données
     subphylum: Tous les sous-embranchements ajoutés à la base de données
@@ -436,7 +385,6 @@ fr:
     variety: Toutes les variétés ajoutées à la base de données
     form: Toutes les formes ajoutées à la base de données
   all_rights_reserved: tous droits réservés
-  all_species: Toutes les Espèces
   all_taxa:
     rank:
       kingdom: Règne
@@ -512,10 +460,8 @@ fr:
   all_your_observations_will_default_to_this_time_zone: |-
     Toutes vos observations seront par défaut dans ce fuseau horaire, sauf si
     vous le définissez autrement.
-  all_your_projects: Tous vos projets
   allow_any: Autoriser tout
   allow_curator_access: Autoriser l’accès au responsable
-  allow_curator_coordinate_access: Autoriser l’accès aux coordonnées par le responsable
   allow_project_curators_to_view_your_private_coordinates: Autoriser les responsables
     du projet à voir vos coordonnées masquées
   allowed_establish_means_values: Valeurs des moyens d’établissement autorisées
@@ -527,30 +473,16 @@ fr:
   alphabetical_order: Ordre alphabétique
   already_have_an_account_log_in_html: Vous avez déjà un compte ?<strong>Connectez-vous.</strong>
   amphibians: amphibiens
-  amphibiaweb_doesnt_have_info_about_species: AmphibiaWeb n’a aucune information sur
-    cette espèce.
-  amphibiaweb_taxonomy: Taxinomie d’AmphibiaWeb
   an: un
-  an_: un
   ancestor_taxon: Taxon ancêtre
   and: et
-  and_choose_a_matching_taxon: et choisissez un taxon correspondant dans la liste.
-    Si vous n’obtenez pas quelque chose comme
   and_help_the_inaturalist_community_grow: et aidez la communauté %{site_name} à s’accroître.
-  and_make_some_new: et faire un nouveau
   and_other_taxa: '&amp; Autres taxons'
-  and_un_license_all_your_observations: et supprimez la licence de toutes vos observations
-  and_you_havent_linked: |-
-    …et vous n’avez pas lié un de ces comptes externes. Vous devez d’abord vous
-    connecter par l’entremise d’%{site_name}, puis modifier votre profil et
-    lier votre compte. Sinon, %{site_name} ne saura pas que les deux comptes
-    sont liés et essayera de créer un nouveau compte!
   and_x_more_people!:
     one: et une personne de plus !
     other: et %{count} personnes de plus !
   android: Androïde
   animals: Animaux
-  animated_observations_map: Carte animée des observations
   annotation: Annotation
   annotations: Annotations
   announcement_was_successfully_created: L’annonce a bien été créée.
@@ -574,9 +506,6 @@ fr:
     supprimer cet utilisateur et tout son contenu?
   are_you_sure?: Êtes-vous certain ?
   are_you_sure_no_undo: Êtes-vous sûr ? Cela ne peut pas être annulé.
-  are_you_sure_delete_asset: Êtes-vous certain de vouloir supprimer ce bien?
-  are_you_sure_delete_observation_from_project: Êtes-vous certain de vouloir supprimer
-    cette observation de %{project}?
   are_you_sure_delete_post: Êtes-vous certain de vouloir supprimer cette note ?
   are_you_sure_delete_taxon_move_associates: Êtes-vous certain de vouloir supprimer
     %{taxonname} (%{taxonid}) et déplacer tous les taxons connexes?
@@ -586,25 +515,14 @@ fr:
   are_you_sure_leave_this_project: Êtes-vous certain de vouloir quitter ce projet?
   are_you_sure_merge_these_places: Êtes-vous certain de vouloir fusionner ces lieux
     ? Cette action ne pourra pas être annulée.
-  are_you_sure_remove_curator: Êtes-vous certain de vouloir supprimer %{user} en tant
-    que" responsable de l’organisation ?
-  are_you_sure_remove_from_project: Êtes-vous certain de vouloir retirer %{user} du
-    projet?
   are_you_sure_remove_photo: Êtes-vous sûr de vouloir supprimer cette photo ?
   are_you_sure_remove_relationship: Êtes-vous sûr de vouloir supprimer cette relation ?
     Ceci arrêtera le suivi de cette personne et supprimera l’accès à vos coordonnées
     masquées si vous en avez autorisé l’accès.
   are_you_sure_remove_taxon_from_list: Êtes-vous certain de vouloir enlever ce taxon
     de la liste?
-  are_you_sure_remove_taxon_from_place: Êtes-vous certain de vouloir enlever ce taxon
-    de la liste de contrôle de %{place}?
   are_you_sure_this_will_reload_the_page_and_you_may_lose_changes: Êtes-vous certain
     ? La page sera rechargée et vous pourriez perdre certaines de vos modifications.
-  are_you_sure_want_activate_account: Êtes-vous certain de vouloir activer ce compte
-    ?
-  are_you_sure_want_delete_account: Êtes-vous certain de vouloir supprimer votre compte
-    ? Cette action supprimera toutes vos données et ne pourra pas être annulée.  Nous
-    sommes désolés de vous voir partir.
   are_you_sure_want_delete_taxon: Êtes-vous certain de vouloir supprimer ce taxon
     ? %{msg}
   are_you_sure_want_delete_taxon_link: Êtes-vous certain de vouloir supprimer ce lien
@@ -613,10 +531,6 @@ fr:
     ?
   are_you_sure_want_delete_this_range: Êtes-vous certain de vouloir supprimer cette
     aire de répartition ?
-  are_you_sure_want_join: Êtes-vous certain de vouloir vous joindre ?
-  are_you_sure_you_want_sync_this: |-
-    Êtes-vous certain de vouloir synchroniser les données
-    de cette observation avec cette photo Flickr ? Vous perdrez les modifications que vous avez faites dans ce formulaire, mais vous pourrez retourner à votre copie enregistrée.
   are_you_sure_you_want_to_commit_this_change: Êtes-vous certain de vouloir valider
     cette modification ? Cette action ne pourra pas être annulée.
   are_you_sure_you_want_to_delete_this: Êtes-vous certain de vouloir supprimer ceci
@@ -644,11 +558,8 @@ fr:
     ces %{x} taxons ?
   are_you_sure_you_want_to_remove_this_invitation: Êtes-vous certain de vouloir supprimer
     cette invitation ?
-  are_you_sure_you_want_to_remove_this_taxon: Êtes-vous certain de vouloir supprimer
-    ce taxon ?
   are_you_sure_you_want_to_remove_this_taxon_from_checklist: Êtes-vous certain de
     vouloir supprimer ce taxon de la liste de contrôle de « %{place} » ?
-  articles: Articles
   associated_observations: Observations connexes
   associated_taxa: Taxons connexes
   attention: Attention
@@ -657,8 +568,6 @@ fr:
     de la liste?
   asc: Asc
   ascending: Croissant
-  aside_from_extraordinary_circumstances: Sauf dans des situations extraordinaires,
-    nous ne vous demanderons jamais votre mot de passe.
   assessment: évaluation
   assessment_has_benn_completed: L’évaluation est terminée
   assessment_sections: Sections de l’évaluation
@@ -669,7 +578,6 @@ fr:
   assessments: évaluations
   associations: Associations
   at: à
-  at_any_time_change: n’importe quand (<span class="button">modifier</span>)
   at_time: à %{time}
   atom: Atom
   attached_taxon: Taxon attaché
@@ -681,14 +589,10 @@ fr:
     cites: CITATIONS
   authorize: Autoriser
   authorize_permissions_from_provider: Autoriser les permissions de %{provider}
-  automatic_descriptions_have_been_disabled: Les descriptions automatiques ont été
-    désactivées pour ce taxon.
   automatic_short: Auto
   automatically_add_to_project: Ajouter automatiquement au projet
   automatically_add_observations_to_this_project: Ajouter automatiquement des observations
     à ce projet
-  automatically_share_your_observations_on: Afficher automatiquement vos observations
-    sur
   automatically_id_new: Identifier automatiquement les nouvelles observations comme
   automatically_update_my_content_for_taxon_changes: Automatiquement mettre à jour
     mon contenu des modifications de taxon
@@ -1680,10 +1584,10 @@ fr:
   flagged_for_curation: Marqué pour supervision
   flagged_taxon: Taxon marqué
   flagged_thing_explanation: Les utilisateurs ont signalé ce %{thing} parce que
-  flagging_desc: Le marquage attire l’attention des responsables bénévoles du site
-    sur quelque chose. Veuillez ne pas marquer les problèmes que vous pouvez régler
+  flagging_desc: "Le marquage attire l’attention des responsables bénévoles du site
+    sur quelque chose. \nVeuillez ne pas marquer les problèmes que vous pouvez régler
     par les identifications, par l’Évaluation de la qualité des données, ou en parlant
-    à la personne qui a rédigé le contenu.
+    à la personne qui a rédigé le contenu."
   flagger: Signaleur
   flags: Drapeaux
   flags_with_count: Indicateurs (%{count})
@@ -1703,9 +1607,9 @@ fr:
   flickr_photo: Photo de Flickr
   flickr_photos: Photos de Flickr
   flickr_style: Style Flickr
-  flickr_tagger: Étiquetter les photos Flickr
+  flickr_tagger: Étiqueter les photos Flickr
   flickr_tags: Étiquettes Flickr
-  flickr_youre_all_set: Vous êtes prêt à commencer l’exploration  d’%{site_name}
+  flickr_youre_all_set: Vous êtes prêt à commencer l’exploration d’%{site_name}
   flowering_phenology: Phénologie de la floraison
   fluid_layout: Mise en page fluide
   fluid: fluide
@@ -1768,7 +1672,7 @@ fr:
   generally_these_come_from_iucn_red_list: En général, ils viennent de la liste rouge
     de l’UICN et, s’ils viennent d’ailleurs, ils respecteront les catégories de l’UICN.
   generate_taxonomic_tags_for_flickr: Générer des étiquettes taxinomiques pour vos
-    photos ''Flickr''.
+    photos Flickr.
   generate_widget: Générer le widget
   generate_your_stats: Générer vos statistiques
   generating: Génération en cours…
@@ -2093,7 +1997,7 @@ fr:
     du pourriel ou injurieuse?
   is_this_offensive_html: S’agit-il de quelque chose <a href="/help#inappropriate">d’inapproprié</a>,
     d’injurieux ou du pourriel ?
-  is_this_place_a_duplicate: Ce lieu est-il en double?
+  is_this_place_a_duplicate: Ce lieu est-il en double ?
   it: Il
   it_can_now_be_used_for_research: Il peut maintenant être utilisé pour la recherche
     et mis en vedette sur d’autres sites web
@@ -2166,7 +2070,7 @@ fr:
   leaderboards: Classements
   leaderboard_most:
     species: Le plus d'espèces en %{time}
-    observations: Le plus d'observations en %{time}
+    observations: Le plus d’observations en %{time}
     identifications: Le plus d'identifications en %{time}
   leading: En tête
   learn!: Apprenez!
@@ -2192,18 +2096,18 @@ fr:
     scientific_names: Noms scientifiques
     afrikaans: Afrikaans
     albanian: Albanais
-    bengali: Bengali
+    bengali: bengali
     catalan: Catalan
     cebuano: Cebuano
     chinese_simplified: Chinois (simplifié)
-    chinese_traditional: Chinois (traditionnel)
+    chinese_traditional: chinois traditionnel
     creole_french: Créole (Français)
-    creole_portuguese: Créole (Portugais)
+    creole_portuguese: créole (basé sur le portugais)
     czech: Tchèque
     danish: Danois
     davawenyo: davawenyo
     dutch: Néerlandais
-    english: Anglais
+    english: anglais
     estonian: Estonien
     finnish: Finnois
     french: Français
@@ -2213,7 +2117,7 @@ fr:
     hawaiian: Hawaïen
     hebrew: Hébreu
     hiligaynon: Hiligaynon
-    icelandic: Islandais
+    icelandic: islandais
     ilokano: Ilocano
     italian: Italien
     japanese: Japonais
@@ -2261,7 +2165,7 @@ fr:
     aux taxons de plus haut rang, par ex. une liste d’oiseaux de la famille des corbeaux
     (Corvidés).
   life_list_first: première inscription à la liste des êtres vivants
-  life_list_firsts: taxons nouveaux
+  life_list_firsts: nouveaux taxons
   linear_scale_label: Linéaire
   link: Lien
   link_or_unlink_your_facebook_account: Lier ou dissocier votre compte Facebook
@@ -2295,14 +2199,14 @@ fr:
     photos de Flickr, n’est-ce pas ?
   linked_flickr_description: En liant votre compte %{site_name} à votre compte Flickr,
     vous pourrez ajouter plusieurs photos à vos observations. Bien entendu, si vous
-    pouvez séparer %{site_name} et Flickr, mais vous ne pourrez plus ajouter de photos.
-    Parfois c’est préférable, comme si vous créez un nouveau compte Flickr que vous
-    voulez lier à %{site_name}.
+    décidez de séparer %{site_name} et Flickr, vous ne pourrez plus ajouter de photos.
+    Parfois c’est préférable, comme lorsque vous créez un nouveau compte Flickr que
+    vous voulez lier à %{site_name}.
   linked_flickr_hotwo: Vous pouvez activer votre compte Flickr avec %{site_name} pour
     ajouter des photos en cliquant sur ce lien.
-  linked_flickr_password_html: <strong> Nous ne vous demanderons jamais votre mot
-    de passe Flickr</strong> (mais Flickr pourrait vérifier l’URL que le bouton vous
-    envoie pour s’assurer que c’est Flickr.com).
+  linked_flickr_password_html: '<strong> Nous ne vous demanderons jamais votre mot
+    de passe Flickr</strong> (mais Flickr le pourrait : vérifiez l’URL que le bouton
+    vous envoie pour vous assurer que c’est bien Flickr.com).'
   linked_flickr_photo_copy_html: <strong> Nous n’enregistrons jamais de copies de
     vos photos ni ne modifierons vos données Flickr sans votre consentement.</strong>
     Nous sommes trop occupés avec les oiseaux, les insectes et les limaces pour vouloir
@@ -2362,7 +2266,7 @@ fr:
     cs: Tchèque
     da: Danois
     de: Allemand
-    el: Grec
+    el: grec
     en-US: Anglais (États-Unis)
     en: anglais
     eo: Espéranto
@@ -2374,14 +2278,14 @@ fr:
     fi: Finnois
     fr: français
     gl: Galicien
+    he: Hébreu
     id: Indonésien
     it: Italien
-    iw: Hébreu
     ja: Japonais
     ko: Coréen
     lb: Luxembourgeois
     lt: Lithuanien
-    mk: Macédonien
+    mk: macédonien
     nl: néerlandais
     oc: Occitan
     pl: Polonais
@@ -2415,9 +2319,9 @@ fr:
     directement les identifications de rang supérieur, mais il est préférable de fusionner
     les nouveaux taxons avec les taxons existants.
   log_in: Connexion
-  log_scale_label: Trace
+  log_scale_label: Journal
   logged_in_as: Vous êtes connecté en tant que
-  login_slash_username: Connexion/nom d’utilisateur
+  login_slash_username: Connexion / nom d’utilisateur
   logo:
     logo: Logo
     white_bg_gif: GIF à fond blanc
@@ -2721,7 +2625,7 @@ fr:
   no_comments_yet: Aucun commentaire jusqu’à présent.
   no_countries_added_yet: Aucun pays n’a été ajouté jusqu’à présent
   no_creative_commons_flickr_photo: Aucune photo Creative Commons de Flickr n’a été
-    étiquette
+    étiquetée
   no_creative_commons_flickr_photos_tagged_x: Aucune photo Creative Commons de Flickr
     n’a été étiquetée « %{x} »
   no_curators_set: Aucun responsable de l’organisation n’a été défini
@@ -2744,7 +2648,7 @@ fr:
     user: '%{user} n’a pas ajouté de favoris.'
   no_journal_post_have_been: Aucune note de journal n’a encore été ajoutée à ce projet.
   no_license_all_rights_reserved: Aucune licence (tous droits réservés)
-  no_link_flickr: Non, je préfère ne pas.
+  no_link_flickr: Non merci.
   no_managers_set: Aucun gestionnaire n’a été défini
   no_matching_article_from_x: Aucun article correspondant à %{x}
   no_matching_invitations: Aucune invitation correspondante
@@ -4487,7 +4391,7 @@ fr:
     groupes Flickr comme le groupe <a href="http://www.flickr.com/groups/encyclopedia_of_life/">Images
     de l’Encyclopédie de la Vie</a>.
   take_me_facebook: Oui, amenez-moi sur Facebook!
-  take_me_flickr!: Oui, amenez-moi sur Flickr!
+  take_me_flickr!: Oui, amenez-moi à Flickr!
   take_me_back: Revenir en arrière
   target_list_alert: Êtes-vous sûr d'avoir tenté d'observer toutes les espèces couvertes
     par votre liste de cibles ? N'oubliez pas que tout ce qui est couvert par votre
@@ -5310,7 +5214,7 @@ fr:
   we_know_is_inconvenience_but_will_allow_grow: Nous savons que c’est un inconvénient,
     mais notre nouveau système d’autorisation permettra à %{sitename} de mieux progresser
     dans l’avenir et vous fournira une sécurité supplémentaire.
-  we_support_flickr: Pour le moment, nous prenons en charge ''Flickr'' pour l’hébergement
+  we_support_flickr: Pour le moment, nous prenons en charge Flickr pour l’hébergement
     d’images et espérons ajouter d’autres hébergeurs prochainement.
   we_tried_to_process_your_upload_named_filename: |-
     Nous avons essayé de traiter votre téléversement appelé %{filename}, mais cela n’a pas fonctionné.
