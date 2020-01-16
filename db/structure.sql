@@ -6973,6 +6973,13 @@ CREATE INDEX index_annotations_on_user_id ON public.annotations USING btree (use
 
 
 --
+-- Name: index_annotations_unique_on_resource_attribute_value; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_annotations_unique_on_resource_attribute_value ON public.annotations USING btree (resource_id, resource_type, controlled_attribute_id, controlled_value_id);
+
+
+--
 -- Name: index_announcements_on_start_and_end; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -10035,4 +10042,6 @@ INSERT INTO schema_migrations (version) VALUES ('20191115201008');
 INSERT INTO schema_migrations (version) VALUES ('20191203201511');
 
 INSERT INTO schema_migrations (version) VALUES ('20191210173400');
+
+INSERT INTO schema_migrations (version) VALUES ('20200116212034');
 
