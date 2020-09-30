@@ -106,7 +106,17 @@ class ObservationsController < ApplicationController
       search_user = unless params[:user_id].blank?
         User.find_by_id( params[:user_id] ) || User.find_by_login( params[:user_id] )
       end
-      search_date = Date.parse( params[:on] ) unless params[:on].blank?
+      unless params[:on].blank?
+        date_parts = {}
+        date_parts[:year], date_parts[:month], date_parts[:day] = params[:on].split("-")
+        if date_parts[:day]
+          search_date = Date.parse( params[:on] )
+        elsif date_parts[:month]
+          search_range_month = Date.parse( "#{date_parts[:year]}-#{date_parts[:month]}-01}" )        
+        else
+          search_range_year = Date.parse( "#{date_parts[:year]}-01-01" )
+        end
+      end
       @shareable_description = if search_taxon
         key = "observation_brief_taxon"
         i18n_vars = {}
@@ -120,6 +130,14 @@ class ObservationsController < ApplicationController
           key += "_on_day"
           i18n_vars[:day] = I18n.l( search_date, format: :long )
         end
+        if search_range_month
+          key += "_in_month_or_year"
+          i18n_vars[:month_or_year] = I18n.l( search_range_month, format: "%B %Y" )
+        end
+        if search_range_year
+          key += "_in_month_or_year"
+          i18n_vars[:month_or_year] = I18n.l( search_range_year, format: "%Y" )
+        end
         if search_user
           key += "_by_user"
           i18n_vars[:user] = search_user.try_methods(:name, :login)
@@ -128,6 +146,10 @@ class ObservationsController < ApplicationController
       elsif search_user
         if search_date
           I18n.t( :observations_by_user_on_date, user: search_user.try_methods(:name, :login), date: I18n.l( search_date, format: :long ) )
+        elsif search_range_month 
+          I18n.t( :observations_by_user_in_month_or_year, user: search_user.try_methods(:name, :login), date: I18n.l( search_range_month, format: "%B %Y" ) )
+        elsif search_range_year
+          I18n.t( :observations_by_user_in_month_or_year, user: search_user.try_methods(:name, :login), date: I18n.l( search_range_year, format: "%Y" ) )
         else
           I18n.t( :observations_by_user, user: search_user.try_methods(:name, :login) )
         end

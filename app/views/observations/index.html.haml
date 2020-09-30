@@ -27,6 +27,8 @@
       .col-xs-12
         #filters.clear
           %h1= t :observations
+          -# TODO:
+          %h1= @shareable_description
           #filter-container.btn-group.pull-right
             %button.btn.btn-default.dropdown-toggle{ "uib-tooltip" => "{{ shared.t( 'filters' ) }}" }
               %i.fa.fa-sliders
